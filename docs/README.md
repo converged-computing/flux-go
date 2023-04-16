@@ -1,6 +1,6 @@
 # Flux Go Bindings
 
-![img/flux-go.png](img/flux-go.png)
+![img/flux-go-banner.png](img/flux-go-banner.png)
 
 Flux provides a Go interface for use in your packages!
 This repository provide an example setup for you to build your own tools (in Go!)
