@@ -1,4 +1,4 @@
-name: Build Deploy Squashed Containers
+name: Build Deploy Containers
 
 on:
 
