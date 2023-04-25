@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	fmt.Println("⭐️ Testing flux-core in Go! ⭐️")
+	fmt.Println("⭐️ Testing flux submit in Go! ⭐️")
 
 	flux := core.NewFlux()
 
@@ -29,7 +29,10 @@ func main() {
 	C.flux_future_wait_all_create()
 
 	// Get the id for it
+	// ran into this issue https://github.com/golang/go/issues/13467
+	// cannot use _cgo0 (variable of type *core._Ctype_struct_flux_future) as *_Ctype_struct_flux_future value in argument to _Cfunc_flux_job_submit_get_id
 	// id := new(C.ulong)
 	// fluxid := C.flux_job_submit_get_id(future, id)
-    // flux_future_destroy (f);
+	// fmt.Println("%s", fluxid)
+	// flux_future_destroy (f);
 }

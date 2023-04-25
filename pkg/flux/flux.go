@@ -1,4 +1,4 @@
-codepackage flux
+package flux
 
 /*
 #cgo LDFLAGS: -ljansson
