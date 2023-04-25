@@ -15,9 +15,8 @@ void flux_zcert_set_meta (zcert_t *cert, const char *field, const char *name) {
 */
 import "C"
 import (
-
     "fmt"
-	"unsafe"
+    "unsafe"
 )
 
 // Keygen uses zeromq, and was originally part of the flux/cmd directory

@@ -6,8 +6,6 @@
 #include <flux/security/sign.h>
 #include <flux/idset.h>
 #include <flux/hostlist.h>
-#include <czmq.h>
-#include <sodium.h>
 #include <stddef.h>
 #include <jansson.h>
 #include <stdlib.h>

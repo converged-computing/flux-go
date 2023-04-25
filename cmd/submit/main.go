@@ -33,6 +33,6 @@ func main() {
 	// cannot use _cgo0 (variable of type *core._Ctype_struct_flux_future) as *_Ctype_struct_flux_future value in argument to _Cfunc_flux_job_submit_get_id
 	// id := new(C.ulong)
 	// fluxid := C.flux_job_submit_get_id(future, id)
-    // fmt.Println("%s", fluxid)
+	// fmt.Println("%s", fluxid)
 	// flux_future_destroy (f);
 }
