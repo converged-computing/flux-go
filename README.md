@@ -12,9 +12,9 @@ Read our 🌈️ [Early Documentation](docs) 🌈️ to get started!
 
 ## Examples
 
- - [submit](cmd/submit.go): Made possible by way of [this example](https://gist.github.com/grondo/6a51a43cb62c2a30c1cf74d167ddb421) from [grondo](https://github.com/grondo)!
+ - [submit](cmd/submit/main.go): Submit a job! Made possible by way of [this example](https://gist.github.com/grondo/6a51a43cb62c2a30c1cf74d167ddb421) from [grondo](https://github.com/grondo)!
+ - [keygen](cmd/keygen/main.go): Use zeromq to generate a curve certificate.
 
- 
 ## License
 
 HPCIC DevTools is distributed under the terms of the MIT license.
