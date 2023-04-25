@@ -36,10 +36,12 @@ jobs:
     - name: Build Containers
       run: |
         cp ./.devcontainer/Dockerfile ./Dockerfile
+        echo "USER root" >> ./Dockerfile
         docker build -t ${{ env.container }}-base:latest .
         echo "WORKDIR /code" >> ./Dockerfile
         echo "COPY . /code" >> ./Dockerfile
         echo "RUN make" >> ./Dockerfile     
+        echo 'USER $USERNAME' >> ./Dockerfile
         docker build -t ${{ env.container }}:latest .
 
     - name: GHCR Login
