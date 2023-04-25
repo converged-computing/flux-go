@@ -33,9 +33,10 @@ jobs:
       uses: actions/checkout@v3
 
     # Include the golang bindings for example
-    - name: Build Container
+    - name: Build Containers
       run: |
         cp ./.devcontainer/Dockerfile ./Dockerfile
+        docker build -t ${{ env.container }}-base:latest .
         echo "WORKDIR /code" >> ./Dockerfile
         echo "COPY . /code" >> ./Dockerfile
         echo "RUN make" >> ./Dockerfile     
@@ -55,9 +56,12 @@ jobs:
         tag=${GITHUB_REF#refs/tags/}
         echo "Tagging and releasing ${{ env.container }}:${tag}"
         docker tag ${{ env.container }}:latest ${{ env.container }}:${tag}
+        docker tag ${{ env.container }}-base:latest ${{ env.container }}-base:${tag}
         docker push ${{ env.container }}:${tag}
+        docker push ${{ env.container }}-base:${tag}
 
     - name: Deploy
       if: (github.event_name != 'pull_request')
       run: |
         docker push ${{ env.container }}:latest
+        docker push ${{ env.container }}-base:latest
