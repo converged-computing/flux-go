@@ -26,6 +26,7 @@ RUN apt-get update \
  && apt-get -qq install -y --no-install-recommends \
     fd-find \
     less \
+    bats \
     ripgrep
 
 # Add the group and user that match our ids

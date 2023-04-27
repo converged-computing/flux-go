@@ -11,3 +11,8 @@ fluxgo:
 	mkdir -p ./bin
 	$(COMMONENVVAR) $(BUILDENVVAR) go build -ldflags '-w' -o ./bin/fluxgo-submit cmd/submit/main.go
 	$(COMMONENVVAR) $(BUILDENVVAR) go build -ldflags '-w' -o ./bin/fluxgo-keygen cmd/keygen/main.go
+
+
+.PHONY: test
+test:
+	bats -t test/bats/cli.bats
