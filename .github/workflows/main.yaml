@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/converged-computing/flux-go    
+      options: --user root
     name: Build
     steps:
     - name: Checkout
