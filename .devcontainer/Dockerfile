@@ -1,4 +1,4 @@
-fFROM fluxrm/flux-sched:focal
+FROM fluxrm/flux-sched:focal
 
 LABEL maintainer="Vanessasaurus <@vsoch>"
 
