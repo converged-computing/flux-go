@@ -1,4 +1,4 @@
-FROM fluxrm/flux-sched:focal
+fFROM fluxrm/flux-sched:focal
 
 LABEL maintainer="Vanessasaurus <@vsoch>"
 
@@ -26,6 +26,7 @@ RUN apt-get update \
  && apt-get -qq install -y --no-install-recommends \
     fd-find \
     less \
+    bats \
     ripgrep
 
 # Add the group and user that match our ids

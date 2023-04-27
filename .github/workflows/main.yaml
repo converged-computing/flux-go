@@ -1,0 +1,29 @@
+name: Test Flux Go
+
+on:
+
+  # Test Nightly
+  schedule: 
+  - cron: 0 0 * * 0
+
+  # Test on pull request
+  pull_request: []
+
+jobs:
+  build:
+    permissions:
+      packages: write
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/converged-computing/flux-go    
+    name: Build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Include the golang bindings for example
+    - name: Test Build
+      run: make
+
+    - name: Run Tests
+      run: make test

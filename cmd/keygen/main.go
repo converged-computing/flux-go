@@ -28,11 +28,16 @@ func main() {
 	fmt.Println("⭐️ Testing flux keygen in Go! ⭐️")
 
 	// A name for the certificate - this is often the hostname
+	fmt.Println("Generating to path...")
 	hostname := getHostname()
 	name := "curve-cert"
 
 	// Path to the certificate to save
 	path := "./curve.cert"
 	flux.KeyGen(name, hostname, path)
-	fmt.Println("Generated certificate!")
+
+	fmt.Println("Generating to string...")
+	curveCert := flux.KeyGen(name, hostname, "")
+	fmt.Println(curveCert)
+
 }

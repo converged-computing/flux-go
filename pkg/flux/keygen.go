@@ -23,8 +23,21 @@ import (
 // so we put it under flux implying that, since "cmd" has special meaning
 // in Go!
 
+var (
+    template = `#   ****  Generated on 2023-04-26 22:54:42 by CZMQ  ****
+#   ZeroMQ CURVE **Secret** Certificate
+#   DO NOT PROVIDE THIS FILE TO OTHER USERS nor change its permissions.
+    
+metadata
+    name = "%s"
+    keygen.hostname = "%s"
+curve
+    public-key = "%s"
+    secret-key = "%s"`
+)
+
 // KeyGen generates a curve certificate
-func KeyGen(name string, hostname string, path string) {
+func KeyGen(name string, hostname string, path string) string {
 
     // Create the new certificate (likely want to check for error here)
     cert := C.zcert_new()
@@ -45,11 +58,25 @@ func KeyGen(name string, hostname string, path string) {
     defer C.free(unsafe.Pointer(hostnameField))
     C.flux_zcert_set_meta(cert, hostnameField, hostnameValue)
 
-    // Note that we can also generate keygen.time, keygen.userid,
-    // And other version metadata. See
-    cpath := C.CString(path)
-    defer C.free(unsafe.Pointer(cpath))
-    fmt.Printf("Saving to %s\n", path)    
-    C.zcert_save_secret (cert, cpath)
+    // If we don't have a path, save to string
+    var curveCert string
+    if path == "" {
+
+        publicKey := C.zcert_public_txt(cert)
+        secretKey := C.zcert_secret_txt(cert)
+        public := C.GoString((*C.char)(unsafe.Pointer(publicKey)))
+        secret := C.GoString((*C.char)(unsafe.Pointer(secretKey)))
+        curveCert = fmt.Sprintf(template, name, hostname, public, secret)
+
+    } else {
+        // Note that we can also generate keygen.time, keygen.userid,
+        // And other version metadata. See
+        cpath := C.CString(path)
+        defer C.free(unsafe.Pointer(cpath))
+        fmt.Printf("Saving to %s\n", path)    
+        C.zcert_save_secret (cert, cpath)
+    }
+
     C.zcert_destroy (&cert)
+    return curveCert
 }
