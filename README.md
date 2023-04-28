@@ -4,7 +4,7 @@ This is a small example of interacting with Flux Framework to submit jobs (and o
 using cgo! To make understanding most easy, we package the commands each into a separate client
 command.
 
-![docs/img/flux-go-banner.png](docs/img/flux-go-banner.png)
+![docs/assets/img/flux-go-banner.png](docs/assets/img/flux-go-banner.png)
 
 🚧️ Under Development! 🚧️
 
